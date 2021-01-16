@@ -127,3 +127,51 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+1.REARRANGE THE DIGITS
+
+class Solution:
+    def smallestnum (self,N):
+        # code here
+        s=[]
+        for x in N:
+           s.append(int(x))
+        l=sorted(s)
+        remain=""
+        zeroes=""
+        for i in l:
+            if i==0:
+                zeroes+=str(i)
+            else:
+                remain+=str(i)
+        return int(remain[0]+zeroes+remain[1:])
+
+
+2.MICS AND JURY
+
+class Solution{
+    static int micsandjury(int N,int M,int[] teams){
+        //code here
+        int left=1,right=0,ans=0;
+        for(int i=0;i<M;i++){
+         if(right<teams[i]){
+         right=teams[i];
+         }
+        }
+        while(left<=right){
+            int mid=(left+right)/2;
+            int group=0;
+            for(int i=0;i<M;i++){
+                if(teams[i]%mid!=0){
+                group+=teams[i]/mid+1;}
+                else{
+                group+=teams[i]/mid;}
+            }
+            if(group>N){
+                left=mid+1;}
+            else{
+               	ans=mid;
+                right=mid-1;}
+        }
+        return ans;
+    }
+}
